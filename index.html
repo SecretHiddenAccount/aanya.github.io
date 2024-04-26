@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-color: #ffccff; /* Lovely pink background */
+    }
+
+    #valentine-message {
+      font-size: 36px;
+      margin-bottom: 20px;
+      color: #ff0066; /* Deep pink text color */
+    }
+
+    #button-container {
+      display: flex;
+    }
+
+    #yes-button, #no-button {
+      cursor: pointer;
+      padding: 15px; /* Larger padding for bigger buttons */
+      border: none;
+      border-radius: 10px; /* Rounded corners */
+      margin: 0 15px; /* Increased margin */
+      transition: background-color 0.3s ease;
+    }
+
+    #yes-button {
+      background-color: #ff66b2; /* Light pink for Yes button */
+      color: #fff;
+    }
+
+    #no-button {
+      background-color: #ff66b2; /* Light pink for No button */
+      color: #fff;
+    }
+
+    #yes-button:hover, #no-button:hover {
+      background-color: #ff3385; /* Darker pink on hover */
+    }
+
+    #yay-text {
+      display: none;
+      font-size: 50px;
+      color: #ff0066;
+      margin-top: 20px;
+    }
+
+    #nice-try-text {
+      display: none;
+      font-size: 30px;
+      color: #ff0000; /* Red color for emphasis */
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+
+<div id="valentine-message">Will you be my Valentine?</div>
+<div id="button-container">
+  <button id="yes-button" onclick="showYayText()">Yes</button>
+  <button id="no-button" onmouseover="showNiceTryText()">No</button>
+</div>
+<div id="yay-text">Yayyy!!!!</div>
+<div id="nice-try-text">Nice try loser</div>
+
+<script>
+  let noButtonHovered = false; // Variable to track if the No button has been hovered
+
+  const noButton = document.getElementById('no-button');
+  const yayText = document.getElementById('yay-text');
+  const niceTryText = document.getElementById('nice-try-text');
+
+  noButton.addEventListener('mouseover', () => {
+    if (!noButtonHovered) {
+      showNiceTryText();
+      noButtonHovered = true;
+    }
+
+    const randomX = Math.random() * (window.innerWidth - noButton.clientWidth);
+    const randomY = Math.random() * (window.innerHeight - noButton.clientHeight);
+    noButton.style.position = 'absolute';
+    noButton.style.left = `${randomX}px`;
+    noButton.style.top = `${randomY}px`;
+  });
+
+  function showYayText() {
+    yayText.style.display = 'block';
+    niceTryText.style.display = 'none';
+  }
+
+  function showNiceTryText() {
+    niceTryText.style.display = 'block';
+  }
+</script>
+
+</body>
+</html>
